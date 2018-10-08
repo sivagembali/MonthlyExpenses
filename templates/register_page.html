@@ -1,0 +1,53 @@
+{% include 'header.html'%}
+<style>
+#register{
+    display: none;
+}
+</style>
+<form action="/registerData/" method="post">
+    <table align="center">
+        <tr>
+            <td>
+                {% if err_msg %}
+                <div class="alert alert-danger">
+                    <strong>{{err_msg}}</strong>
+                </div>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th align="center">User Registration</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="uname" placeholder="Name" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="email" name="uemail" placeholder="Email" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="number" name="unumber" placeholder="Mobile Nu" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="ugender" value="Male" required>Male
+                <input type="radio" name="ugender" value="Female" required>Female
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="password" name="upwd" placeholder="Password" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Register">
+            </td>
+        </tr>
+    </table>
+</form>

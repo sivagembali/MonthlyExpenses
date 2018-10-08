@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MonthlyExpenses</title>
-</head>
-<body>
-    <h3>Welcome to my new APP</h3>
+{% include 'header.html'%}
 
-</body>
-</html>
+<h3>Welcome to my new APP</h3>
+{% if success_msg %}
+<div class="alert alert-success">
+  <strong>{{success_msg}}.</strong>
+</div>
+{% endif %}

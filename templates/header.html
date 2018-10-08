@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MonthlyExpenses</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="row">
+          <div class="col-sm-3">
+              <img id="logo" src="{{url_for('static',filename='img/logo.png')}}" width="150px" height="150px">
+          </div>
+          <div class="col-sm-9" align="center">
+              <h1 align="left" style="padding: 20px"><d>Individual Monthly Expenses Tracker</d></h1>
+          </div>
+      </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+      <li><a href="/registerPage/" id="register">Register</a></li>
+      <li><a href="/loginPage/">Login</a></li>
+    </ul>
+  </div>
+</nav>
+</body>
+</html>
