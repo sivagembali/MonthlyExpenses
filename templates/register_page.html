@@ -1,9 +1,5 @@
 {% include 'header.html'%}
-<style>
-#register{
-    display: none;
-}
-</style>
+{% include 'index_header.html' %}
 <form action="/registerData/" method="post">
     <table align="center">
         <tr>
@@ -25,18 +21,17 @@
         </tr>
         <tr>
             <td>
+                <input type="text" name="username" placeholder="Username" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <input type="email" name="uemail" placeholder="Email" required>
             </td>
         </tr>
         <tr>
             <td>
                 <input type="number" name="unumber" placeholder="Mobile Nu" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="radio" name="ugender" value="Male" required>Male
-                <input type="radio" name="ugender" value="Female" required>Female
             </td>
         </tr>
         <tr>
