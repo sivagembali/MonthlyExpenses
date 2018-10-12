@@ -19,9 +19,32 @@ def showIndex():
         return loginPage()
     return render_template('index.html')
 
+@app.route('/expensesPage/')
+def expensesPage():
+    return render_template('expenses_show.html',user_name=session['username'])
+
+@app.route('/expensesAddingPage/')
+def expensesAddingPage():
+    users_data = md.registerNew.query.all()
+    return render_template('expenses_add.html', user_name=session['username'],users_data=users_data)
+
 @app.route('/home/')
 def showIndex1():
     return render_template('index.html')
+
+@app.route('/getExpensesData/',methods=['POST','GET'])
+def getExpensesData():
+    from_date = dt.strptime(request.form['from_date'], "%Y-%m-%d").date()
+    to_date = dt.strptime(request.form['to_date'], "%Y-%m-%d").date()
+    result_from_db = md.expenses.query.filter_by(user_id=session['username']).all()
+    expenses_dict = []
+    total_expenses = 0
+    for record in result_from_db:
+        if(record.date <= to_date and record.date >= from_date ):
+            total_expenses += record.amount
+            expenses_dict.append(record)
+    #print(expenses_dict)
+    return render_template('expenses_show.html',user_exp_details=expenses_dict,total_expenses=total_expenses,user_name = session['username'])
 
 @app.route('/registerPage/')
 def registerPage():
@@ -67,7 +90,7 @@ def storeExpensesData():
     amount = int(request.form['amount'])
     if(exp_type in ['trip','dinner','hangout']):
         members = request.form.getlist('members')
-        print(members)
+        #print(members)
         if(members == []):
             members.append(session['username'])
         amount = amount/len(members)

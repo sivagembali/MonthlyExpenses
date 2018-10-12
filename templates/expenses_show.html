@@ -1,0 +1,39 @@
+{% include 'header.html'%}
+{% include 'home_header.html'%}
+
+<form action="/getExpensesData/" method="post">
+    <div class="container">
+            <div class="col-xs-4">
+                <label>From Date:</label>
+                <input type="date" name="from_date" required>
+            </div>
+            <div class="col-xs-4">
+                <label>To Date:</label>
+                <input type="date" name="to_date" required>
+            </div>
+            <div class="col-xs-4">
+                <input type="submit" value="Get Details" class="btn btn-primary">
+            </div>
+    </div>
+</form><br><br><br><br>
+{% if user_exp_details %}
+<table class="table table-striped" style="width: 80%" align="center">
+    <tr>
+        <td>Date</td>
+        <td>Type of Expense</td>
+        <td>Amount</td>
+    </tr>
+    {% for record in user_exp_details %}
+    <tr>
+        <td>{{record.date}}</td>
+        <td>{{record.type}}</td>
+        <td>{{record.amount}}</td>
+    </tr>
+    {% endfor%}
+    <tr>
+        <td colspan="2" align="center">Total Expenses:</td>
+        <td>{{total_expenses}}</td>
+
+    </tr>
+</table>
+{% endif %}

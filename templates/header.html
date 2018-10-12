@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MonthlyExpenses</title>
     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" />
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}" ></script>
+    <script src="{{url_for('static',filename='js/jquery-3.3.1.min.js')}}" ></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 </head>
 <body>
 <div class="row">
@@ -15,7 +18,7 @@
         <img id="logo" src="{{url_for('static',filename='img/logo.png')}}" width="150px" height="150px">
     </div>
     <div class="col-sm-6" align="center">
-        <h1 align="left" style="padding: 20px;margin-top: 25pt"><d>Individual Monthly Expenses Tracker</d></h1>
+        <h1 align="left" style="margin-top: 25pt">Individual Monthly Expenses</h1>
     </div>
     <div class="col-sm-3" style="margin-top:20px;margin-right:0px">
         <canvas id="canvas" style="float:right;margin-right: 20pt" width="120" height="120">
