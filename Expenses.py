@@ -1,12 +1,8 @@
 from flask import Flask,request,render_template,session
-from flask_sqlalchemy import SQLAlchemy
 import models as md
 from datetime import datetime as dt
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///expenses.sqlite3'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = "cdkddkdkdkdkdhdhdhd"
-db = SQLAlchemy(app)
+
 
 @app.route('/logout/')
 def logout():
