@@ -28,7 +28,7 @@ def expensesAddingPage():
     users_data = registerNew.query.all()
     return render_template('expenses_add.html', user_name=session['username'],users_data=users_data)
 
-@app.route('/home/')
+@app.route('/indexPage/')
 def showIndex1():
     return render_template('index.html')
 
