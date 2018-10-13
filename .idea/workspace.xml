@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="082e0dfd-388c-4cf8-8d06-2b893aab5ab1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Expenses.py" beforeDir="false" afterPath="$PROJECT_DIR$/Expenses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expenses.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/expenses.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/expenses_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/expenses_add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/expenses_show.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/expenses_show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home_header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index_header.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,14 +67,14 @@
         <counts>
           <entry key="css" value="104" />
           <entry key="dummy" value="1" />
-          <entry key="html" value="5586" />
+          <entry key="html" value="5656" />
           <entry key="py" value="5586" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="104" />
-          <entry key="HTML" value="5586" />
+          <entry key="HTML" value="5656" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Python" value="5586" />
         </counts>
@@ -118,9 +111,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/expenses_show.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+            <state relative-caret-position="51">
+              <caret line="3" column="90" selection-start-line="3" selection-start-column="90" selection-end-line="3" selection-end-column="90" />
               <folding>
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -604,9 +598,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/expenses_show.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        <state relative-caret-position="51">
+          <caret line="3" column="90" selection-start-line="3" selection-start-column="90" selection-end-line="3" selection-end-column="90" />
           <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
           </folding>
         </state>
