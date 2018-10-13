@@ -34,27 +34,36 @@ def showIndex1():
 
 @app.route('/getExpensesData/',methods=['POST','GET'])
 def getExpensesData():
-    from_date = dt.strptime(request.form['from_date'], "%Y-%m-%d").date()
-    to_date = dt.strptime(request.form['to_date'], "%Y-%m-%d").date()
-    result_from_db = expenses.query.filter_by(user_id=session['username']).all()
-    expenses_dict = []
-    total_expenses = 0
-    for record in result_from_db:
-        if(record.date <= to_date and record.date >= from_date ):
-            total_expenses += record.amount
-            expenses_dict.append(record)
-    #print(expenses_dict)
-    return render_template('expenses_show.html',user_exp_details=expenses_dict,total_expenses=total_expenses,user_name = session['username'])
+    if(request.method=='POST'):
+        from_date = dt.strptime(request.form['from_date'], "%Y-%m-%d").date()
+        to_date = dt.strptime(request.form['to_date'], "%Y-%m-%d").date()
+        exp_type = request.form['exp_type']
+        if(exp_type=='All'):
+            result_from_db = expenses.query.filter_by(user_id=session['username']).all()
+        else:
+            result_from_db = expenses.query.filter_by(user_id=session['username'], type=exp_type).all()
+        #print(result_from_db,exp_type)
+        expenses_list = []
+        total_expenses = 0
+        for record in result_from_db:
+            if(record.date <= to_date and record.date >= from_date ):
+                total_expenses += record.amount
+                expenses_list.append(record)
+        #print(expenses_dict)
+        if(len(expenses_list)==0):
+            return render_template('expenses_show.html',msg='No Records Available',user_name=session['username'])
+
+        return render_template('expenses_show.html',user_exp_details=expenses_list,total_expenses=total_expenses,user_name = session['username'])
+    return render_template('expenses_show.html',user_name=session['username'])
 
 @app.route('/registerPage/')
 def registerPage():
     return render_template('register_page.html')
 
 @app.route('/loginPage/')
-def loginPage(success_msg=None):
+def loginPage():
     if ('username' in session):
-        users_data = registerNew.query.all()
-        return render_template('home.html', user_name=session['username'],users_data=users_data,success_msg=success_msg)
+        return render_template('home.html', user_name=session['username'])
     return render_template('login_page.html')
 
 @app.route('/registerData/',methods=['POST','GET'])
@@ -84,35 +93,40 @@ def registerData():
 
 @app.route('/storeExpensesData/',methods=['POST','GET'])
 def storeExpensesData():
-    user_id = session['username']
-    exp_type = request.form['exp_type']
-    date = dt.strptime(request.form['date'], "%Y-%m-%d")
-    amount = int(request.form['amount'])
-    if(exp_type in ['trip','dinner','hangout']):
-        members = request.form.getlist('members')
-        #print(members)
-        if(members == []):
-            members.append(session['username'])
-        amount = amount/len(members)
-        for member in members:
+    if(request.method=='POST'):
+        user_id = session['username']
+        exp_type = request.form['exp_type']
+        date = dt.strptime(request.form['date'], "%Y-%m-%d")
+        amount = int(request.form['amount'])
+        if(exp_type in ['trip','dinner','hangout']):
+            members = request.form.getlist('members')
+            #print(members)
+            if(members == []):
+                members.append(session['username'])
+            amount = amount/len(members)
+            for member in members:
+                if(len(expenses.query.all())==0):
+                    ref = expenses(entry_no=1,user_id=member,date=date,amount=amount,type=exp_type)
+                    db.session.add(ref)
+                    db.session.commit()
+                else:
+                    ref = expenses(user_id=member, date=date, amount=amount, type=exp_type)
+                    db.session.add(ref)
+                    db.session.commit()
+        else:
             if(len(expenses.query.all())==0):
-                ref = expenses(entry_no=1,user_id=member,date=date,amount=amount,type=exp_type)
+                ref = expenses(entry_no=1,user_id=user_id,date=date,type=exp_type,amount=amount)
                 db.session.add(ref)
                 db.session.commit()
             else:
-                ref = expenses(user_id=member, date=date, amount=amount, type=exp_type)
+                ref = expenses(user_id=user_id,date=date,type=exp_type,amount=amount)
                 db.session.add(ref)
                 db.session.commit()
-    else:
-        if(len(expenses.query.all())==0):
-            ref = expenses(entry_no=1,user_id=user_id,date=date,type=exp_type,amount=amount)
-            db.session.add(ref)
-            db.session.commit()
-        else:
-            ref = expenses(user_id=user_id,date=date,type=exp_type,amount=amount)
-            db.session.add(ref)
-            db.session.commit()
-    return loginPage(success_msg='Successfully Saved')
+        users_data = registerNew.query.all()
+        return render_template('expenses_add.html', user_name=session['username'],success_msg='Successfully Saved', users_data=users_data)
+    users_data = registerNew.query.all()
+    return render_template('expenses_add.html', user_name=session['username'], users_data=users_data)
+#return loginPage(success_msg='Successfully Saved')
 
 
 @app.route('/loginData/',methods=['POST','GET'])

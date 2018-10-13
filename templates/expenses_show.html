@@ -3,17 +3,31 @@
 
 <form class="form-inline" action="/getExpensesData/" method="post" style="margin-top: 80px">
     <div class="container">
-            <div class="form-group col-xs-4">
-                <label for="from_date">From Date:</label>
-                <input type="date" id="from_date" class="form-control" name="from_date" required>
-            </div>
-            <div class="form-group col-xs-4">
-                <label for="to_date">To Date:</label>
-                <input type="date" id="to_date" class="form-control" name="to_date" required>
-            </div>
-            <div class="form-group col-xs-4">
-                <input type="submit" value="Get Details" class="btn btn-primary">
-            </div>
+        <div class="form-group col-md-3">
+            <label>Expense Type:</label>
+            <select name="exp_type" style="padding: 3pt;border-radius: 3pt">
+                <option value="All" >All</option>
+                <option value="Trip">Trip</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Hangout">Hangout</option>
+                <option value="Rent">Rent</option>
+                <option value="Loan">Loan</option>
+                <option value="Insurence">Insurence</option>
+                <option value="Home_Expenses">Home Expenses</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="from_date">From Date:</label>
+            <input type="date" id="from_date" class="form-control" name="from_date" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="to_date">To Date:</label>
+            <input type="date" id="to_date" class="form-control" name="to_date" required>
+        </div>
+        <div class="form-group col-md-2">
+            <input type="submit" value="Get Details" class="btn btn-primary">
+        </div>
     </div>
 </form>
 
@@ -34,7 +48,11 @@
 
 <br><br><br><br>
 {% if user_exp_details %}
+<div align="center">
 <table class="table table-striped" style="width: 80%" align="center">
+    <tr>
+        <td align="center" colspan="3"><b>Expenses Details</b></td>
+    </tr>
     <tr>
         <td>Date</td>
         <td>Type of Expense</td>
@@ -53,5 +71,17 @@
 
     </tr>
 </table>
+    </div>
+{% endif %}
+{% if msg %}
+<div id="warn_msg" class="alert alert-warning" align="center">
+  <strong >{{msg}}.</strong>
+</div>
 {% endif %}
 {% include 'footer.html'%}
+<!--
+<script>
+      $(document).ready( function() {
+          $('#warn_msg').delay(1500).fadeOut();
+      });
+</script>-->
