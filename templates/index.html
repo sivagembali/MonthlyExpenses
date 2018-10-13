@@ -2,8 +2,21 @@
 {% include 'index_header.html' %}
 <h3>Welcome to my new APP</h3>
 {% if success_msg %}
-<div class="alert alert-success">
-  <strong>{{success_msg}}.</strong>
+<div id="success_msg" class="alert alert-success">
+  <strong >{{success_msg}}.</strong>
 </div>
 {% endif %}
+
+
+
+
+
+
+
+
 {% include 'footer.html'%}
+<script>
+      $(document).ready( function() {
+          $('#success_msg').delay(3000).fadeOut();
+      });
+</script>

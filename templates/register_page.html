@@ -1,6 +1,6 @@
 {% include 'header.html'%}
 {% include 'index_header.html' %}
-<form action="/registerData/" method="post">
+<!--<form action="/registerData/" method="post">
     <table align="center">
         <tr>
             <td>
@@ -45,4 +45,64 @@
             </td>
         </tr>
     </table>
-</form>
+</form>-->
+
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+                {% if err_msg %}
+                <div class="alert alert-danger">
+                    <strong>{{err_msg}}</strong>
+                </div>
+                {% endif %}
+                <form action="/registerData/" method="post" class="login100-form validate-form">
+					<span class="login100-form-title p-b-26">
+						Registeration Page
+					</span>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="uname" required placeholder="Name">
+						<!--<span class="focus-input100" data-placeholder="Username"></span>-->
+					</div>
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="username" required placeholder="Username">
+						<!--<span class="focus-input100" data-placeholder="Username"></span>-->
+					</div>
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="email" name="uemail" required placeholder="Email">
+						<!--<span class="focus-input100" data-placeholder="Username"></span>-->
+					</div>
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="number" name="unumber" required placeholder="Mobile Number">
+						<!--<span class="focus-input100" data-placeholder="Username"></span>-->
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="upwd" required placeholder="Password">
+						<!--<span class="focus-input100" data-placeholder="Password"></span>-->
+					</div>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Register
+							</button>
+						</div>
+					</div>
+					<div class="text-center p-t-115">
+						<span class="txt1">
+							Already have an account?
+						</span>
+						<a class="txt2" href="/loginPage/">
+							Signin
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+{% include 'footer.html'%}

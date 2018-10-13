@@ -7,7 +7,10 @@
     }
 </style>
 {% if success_msg %}
-<h4 class="alert alert-success" id="success_msg">{{success_msg}}</h4>
+<div id="success_msg" class="alert alert-success">
+  <strong >{{success_msg}}.</strong>
+</div>
+<!--<h4 class="alert alert-success" id="success_msg">{{success_msg}}</h4>-->
 {% endif %}
 
 <form action="/storeExpensesData/" method="post">
@@ -67,7 +70,7 @@
 </form>
 <script>
     $(document).ready( function() {
-        $('#success_msg').delay(3000).fadeOut();
+        $('#success_msg').delay(2000).fadeOut();
         $('.splits').click(function (){
             $('.split').show();
         });
@@ -76,3 +79,4 @@
         });
       });
 </script>
+{% include 'footer.html'%}
