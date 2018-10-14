@@ -1,4 +1,19 @@
-<nav class="navbar navbar-inverse">
+<style>
+      .affix {
+      top:0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
+
+  .affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
+</style>
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="152">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

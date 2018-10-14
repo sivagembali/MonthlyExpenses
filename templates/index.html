@@ -8,7 +8,7 @@
 {% endif %}
 
 <div class="container-fluid">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="border: 1px solid black;border-radius: 10px;overflow: hidden;width: 50%;margin-left: 10pt" >
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:80%;border: 1px solid black;border-radius: 10px;overflow: hidden;margin-left: 10pt;margin-top: 20px" >
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -41,8 +41,35 @@
       <span class="sr-only">Next</span>
     </a>-->
   </div>
-
 </div>
+
+<div class="container-fluid text-center" id="">
+  <div class="">
+    <div class="col-sm-12 well" id="contact">
+      <div class="well">
+        <p><a href="#">My Profile</a></p>
+        <img src="{{url_for('static',filename='img/siva.jpg')}}" class="img-circle" height="200" width="200" alt="Avatar">
+      </div>
+      <div class="well">
+        <p><a href="#">Interests</a></p>
+        <p>
+          <span class="label label-default">Python</span>
+          <span class="label label-primary">W3Schools</span>
+          <span class="label label-success">Flask</span>
+          <span class="label label-info">Django</span>
+          <span class="label label-warning">Volley Ball</span>
+          <span class="label label-danger">Friends</span>
+        </p>
+      </div>
+      <p>Mobile: 9705707580</p>
+      <p>Email: sivaprasad.python@gmail.com</p>
+      <p><a href="https://www.github.com/sivagembali">Github Link</a></p>
+      <p><a href="https://www.hackerrank.com/sivagembali">HackerRank Link</a></p>
+    </div>
+  </div>
+</div>
+
+
 
 
 

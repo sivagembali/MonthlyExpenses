@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MonthlyExpenses</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static',filename='img/favicon.ico')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
     <!--<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" />
     <script src="{{url_for('static',filename='js/bootstrap.min.js')}}" ></script>
@@ -32,7 +33,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
         <img id="logo" src="{{url_for('static',filename='img/logo.png')}}" width="150px" height="150px">
     </div>
     <div class="col-md-6" align="center">
-        <h1 align="left" style="margin-top: 25pt">Individual Monthly Expenses</h1>
+        <h1 align="left" style="margin-top: 25pt;text-transform: uppercase"><b>Individual Monthly Expenses</b></h1>
     </div>
     <div class="col-md-3" style="margin-top:20px;margin-right:0px">
         <canvas id="canvas" style="float:right;margin-right: 20pt" width="120" height="120">

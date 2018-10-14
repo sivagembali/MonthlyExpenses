@@ -54,9 +54,9 @@
         <td align="center" colspan="3"><b>Expenses Details</b></td>
     </tr>
     <tr>
-        <td>Date</td>
-        <td>Type of Expense</td>
-        <td>Amount</td>
+        <th>Date</th>
+        <th>Type of Expenses</th>
+        <th>Amount</th>
     </tr>
     {% for record in user_exp_details %}
     <tr>
@@ -78,7 +78,7 @@
   <strong >{{msg}}.</strong>
 </div>
 {% endif %}
-{% include 'footer.html'%}
+
 <!--
 <script>
       $(document).ready( function() {
