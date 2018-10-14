@@ -98,9 +98,9 @@ def storeExpensesData():
         exp_type = request.form['exp_type']
         date = dt.strptime(request.form['date'], "%Y-%m-%d")
         amount = int(request.form['amount'])
-        if(exp_type in ['trip','dinner','hangout']):
+        if(exp_type in ['Trip','Dinner','Hangout']):
             members = request.form.getlist('members')
-            #print(members)
+            print('hello',members)
             if(members == []):
                 members.append(session['username'])
             amount = amount/len(members)
