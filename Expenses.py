@@ -2,6 +2,9 @@ from flask import Flask,request,render_template,session
 from flask_sqlalchemy import SQLAlchemy
 #import models as md
 from datetime import datetime as dt
+
+import json
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///expenses.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -128,6 +131,19 @@ def storeExpensesData():
     return render_template('expenses_add.html', user_name=session['username'], users_data=users_data)
 #return loginPage(success_msg='Successfully Saved')
 
+@app.route('/allData/',methods=['POST','GET'])
+def allData():
+    register_data = registerNew.query.all()
+    d1={}
+    d2={}
+    for x in register_data:
+        d1[x.user_id] = {'username':x.name,'email':x.email,'mobile':x.mobile,'password':x.password}
+    expenses_data = expenses.query.all()
+    for x in expenses_data:
+        d2[x.entry_no] = {'username':x.user_id,'type':x.type,'amount':x.amount,'date':str(x.date)}
+    d={'register_data':d1,'expenses_data':d2}
+    print(d)
+    return json.dumps(d)
 
 @app.route('/loginData/',methods=['POST','GET'])
 def loginData():
