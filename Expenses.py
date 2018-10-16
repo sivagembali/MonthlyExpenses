@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template,session
+from flask import Flask, request, render_template, session, make_response
 from flask_sqlalchemy import SQLAlchemy
 #import models as md
 from datetime import datetime as dt
@@ -130,6 +130,20 @@ def storeExpensesData():
     users_data = registerNew.query.all()
     return render_template('expenses_add.html', user_name=session['username'], users_data=users_data)
 #return loginPage(success_msg='Successfully Saved')
+
+@app.route('/csv/',methods=['POST','GET'])
+def download_csv():
+    user_id = session['username']
+    res = expenses.query.filter_by(user_id=user_id).all()
+    csv = ''
+    for x in res:
+        csv = csv + x.date.strftime('%m-%d-%Y') + ',' + x.type + ',' + str(x.amount) + '\n'
+    csv = 'All Expenses Details,'+user_id+'\n' + csv
+    response = make_response(csv)
+    cd = 'attachment; filename='+ user_id +'.csv'
+    response.headers['Content-Disposition'] = cd
+    response.mimetype='text/csv'
+    return response
 
 @app.route('/allData/',methods=['POST','GET'])
 def allData():
