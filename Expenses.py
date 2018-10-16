@@ -136,9 +136,11 @@ def download_csv():
     user_id = session['username']
     res = expenses.query.filter_by(user_id=user_id).all()
     csv = ''
+    total = 0
     for x in res:
         csv = csv + x.date.strftime('%m-%d-%Y') + ',' + x.type + ',' + str(x.amount) + '\n'
-    csv = 'All Expenses Details,'+user_id+'\n' + csv
+        total = total + x.amount
+    csv = 'All Expenses Details,'+user_id+'\n' + csv + ',Total ,' + str(total)
     response = make_response(csv)
     cd = 'attachment; filename='+ user_id +'.csv'
     response.headers['Content-Disposition'] = cd
