@@ -140,6 +140,9 @@ def download_csv():
     for x in res:
         csv = csv + x.date.strftime('%m-%d-%Y') + ',' + x.type + ',' + str(x.amount) + '\n'
         total = total + x.amount
+
+    if(total==0):
+        return render_template('expenses_show.html',user_name=session['username'],msg="You Don't have any Expenses")
     csv = 'All Expenses Details,'+user_id+'\n' + csv + ',Total ,' + str(total)
     response = make_response(csv)
     cd = 'attachment; filename='+ user_id +'.csv'
